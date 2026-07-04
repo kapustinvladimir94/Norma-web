@@ -1,6 +1,6 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import { CalendarClock, FileBarChart, ScanSearch, Target } from "lucide-react";
+import { CalendarClock, Check, FileBarChart, ScanSearch, Target } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
 const problems = [
@@ -36,6 +36,48 @@ const steps = [
     number: "03",
     title: "О 9:00 ви вже в курсі",
     text: "Отримуєте короткий випуск по своїй темі з тим, що справді варто знати сьогодні.",
+  },
+];
+
+const digestColumns = [
+  {
+    title: "Тільки ваше",
+    items: [
+      "~250 законопроєктів на місяць — у вашому дайджесті 2–5 релевантних",
+      "ШІ розуміє зміст, а не шукає слова в назві",
+      "Жодного спаму: немає подій — немає дайджесту",
+    ],
+  },
+  {
+    title: "Зрозумілою мовою",
+    items: [
+      "Суть кожного акта за 2 речення",
+      "Кого зачіпає — конкретно, без юридичної казуїстики",
+      "Стадія розгляду і посилання на першоджерело",
+    ],
+  },
+  {
+    title: "З рекомендацією",
+    items: [
+      "Кожен акт має рекомендовану дію",
+      "Від «без дій» до «підготувати позицію»",
+      "Пріоритет за важливістю: критичне — зверху",
+    ],
+  },
+];
+
+const roles = [
+  {
+    title: "Власник бізнесу",
+    text: "Немає юрвідділу, але є ризики. Norma — ваш радар: дізнаєтесь про загрозу до того, як вона стане законом.",
+  },
+  {
+    title: "GR-фахівець",
+    text: "Реагувати на зареєстрований законопроєкт треба до першого читання. Norma дає фору в тижні, а не в дні.",
+  },
+  {
+    title: "Юрист інхаус",
+    text: "Моніторинг ВР — година щоранку. Norma повертає цю годину і не пропускає акти без очевидних ключових слів.",
   },
 ];
 
@@ -148,6 +190,15 @@ function HeroPreview() {
   );
 }
 
+function Bullet({ children }: { children: string }) {
+  return (
+    <li className="flex items-start gap-3">
+      <Check size={18} strokeWidth={1.5} className="mt-[0.18rem] shrink-0 text-[var(--accent)]" />
+      <span className="body-text text-[15px]">{children}</span>
+    </li>
+  );
+}
+
 export default function HomePage() {
   return (
     <main className="bg-[var(--bg)] text-[var(--ink)]">
@@ -244,6 +295,58 @@ export default function HomePage() {
                     <p className="body-text mt-3 max-w-sm">{step.text}</p>
                   </div>
                 </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container-site">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="eyebrow">ЩОДЕННИЙ ДАЙДЖЕСТ</p>
+              <h2 className="h-display h2 mt-3">Що ви отримуєте о 9:00</h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-12 grid gap-0 md:grid-cols-3 md:border-t md:border-[color:var(--line)]">
+            {digestColumns.map((column, index) => (
+              <Reveal
+                key={column.title}
+                delay={index * 60}
+                className={index > 0 ? "md:border-l md:border-[color:var(--line)] md:pl-8 md:pr-4" : "md:pr-8"}
+              >
+                <article className="py-6">
+                  <h3 className="h-display h3">{column.title}</h3>
+                  <ul className="mt-6 space-y-4">
+                    {column.items.map((item) => (
+                      <Bullet key={item}>{item}</Bullet>
+                    ))}
+                  </ul>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-[var(--bg-soft)]">
+        <div className="container-site">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="eyebrow">ДЛЯ КОГО</p>
+              <h2 className="h-display h2 mt-3">Створено для тих, хто не може пропустити зміни</h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-12 grid gap-4 lg:grid-cols-3">
+            {roles.map((role, index) => (
+              <Reveal key={role.title} delay={index * 60}>
+                <article className="h-full rounded-[10px] border border-[color:var(--line)] bg-white p-8 shadow-[var(--shadow-soft)]">
+                  <h3 className="h-display h3">{role.title}</h3>
+                  <p className="body-text mt-4">{role.text}</p>
+                </article>
               </Reveal>
             ))}
           </div>
