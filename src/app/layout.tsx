@@ -1,15 +1,24 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+﻿import type { Metadata } from "next";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["500", "600"],
 });
 
 export const metadata: Metadata = {
   title: "Norma — моніторинг законодавства для вашого бізнесу",
-  description: "Щоденний моніторинг законодавчих ініціатив України для бізнесу.",
+  description: "Преміальний моніторинг законодавчих ініціатив України для бізнесу.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -18,11 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="uk"
-      className={`${inter.variable} h-full antialiased`}
-    >
-      <body className="min-h-full bg-slate-950 text-slate-100">{children}</body>
+    <html lang="uk" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
+      <body className="min-h-full bg-[var(--bg)] text-[var(--ink)]">{children}</body>
     </html>
   );
 }
+
