@@ -1,6 +1,6 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import { CalendarClock, Check, FileBarChart, ScanSearch, Target } from "lucide-react";
+import { CalendarClock, Check, FileBarChart, Minus, Plus, ScanSearch, Target } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 
 const problems = [
@@ -78,6 +78,47 @@ const roles = [
   {
     title: "Юрист інхаус",
     text: "Моніторинг ВР — година щоранку. Norma повертає цю годину і не пропускає акти без очевидних ключових слів.",
+  },
+];
+
+const comparisonRows = [
+  ["Фокус", "Законопроєкти ДО ухвалення", "Чинне законодавство ПІСЛЯ"],
+  ["Формат", "Дайджест у Telegram за 10 секунд", "Десктоп-система, потрібен пошук"],
+  ["Налаштування", "2 хвилини: опишіть бізнес", "Тренінги і навчання персоналу"],
+  ["Фільтрація", "ШІ відбирає під ваш бізнес", "Ручний пошук по базі"],
+  ["Ціна", "Від $0", "Від ~2000 грн/міс за ліцензію"],
+];
+
+const faqs = [
+  {
+    question: "Звідки Norma бере дані?",
+    answer:
+      "З офіційних відкритих даних Верховної Ради України. Кожен акт у дайджесті має посилання на першоджерело — картку законопроєкту на сайті ВР.",
+  },
+  {
+    question: "Чим ви відрізняєтесь від правових систем типу ЛІГА чи ЗАКОН?",
+    answer:
+      "Правові системи — це бази чинного законодавства для юристів. Norma — це радар законопроєктів: ми повідомляємо про зміни на стадії реєстрації, коли на них ще можна вплинути або підготуватися.",
+  },
+  {
+    question: "Чи потрібен юрист, щоб користуватися Norma?",
+    answer:
+      "Ні. Кожен акт пояснюється простою мовою: що це, кого зачіпає, що робити. Юридична освіта не потрібна.",
+  },
+  {
+    question: "Що якщо в назві закону немає слів про мою сферу?",
+    answer:
+      "Саме для цього ми використовуємо ШІ: він читає повний текст і пояснювальну записку, тому знаходить релевантні акти навіть без очевидних ключових слів у назві.",
+  },
+  {
+    question: "Скільки це коштує?",
+    answer:
+      "Базовий моніторинг — безкоштовно. Pro з щоденним дайджестом, кількома темами і миттєвими алертами — $49/міс. Перші 14 днів Pro — безкоштовно.",
+  },
+  {
+    question: "Як швидко я дізнаюсь про важливу зміну?",
+    answer:
+      "Щоденний дайджест приходить о 9:00. Критичні події по актах з вашого watchlist — миттєвим алертом протягом години.",
   },
 ];
 
@@ -353,6 +394,42 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section bg-[var(--bg-soft)]">
+        <div className="container-site">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="eyebrow">ЧОМУ NORMA</p>
+              <h2 className="h-display h2 mt-3">Не ще одна правова система</h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-12 overflow-x-auto pb-2">
+            <table className="w-full min-w-[760px] border-collapse">
+              <thead>
+                <tr className="border-b border-[color:var(--line)] text-left">
+                  <th className="py-4 pr-6 text-sm font-medium text-[var(--ink-soft)]"> </th>
+                  <th className="py-4 pr-6 text-sm font-medium text-[var(--accent)]">Norma</th>
+                  <th className="py-4 pr-6 text-sm font-medium text-[var(--ink-soft)]">Традиційні правові системи</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map(([label, norma, traditional]) => (
+                  <tr key={label} className="border-b border-[color:var(--line)] align-top">
+                    <th className="py-4 pr-6 text-left text-sm font-medium text-[var(--ink)]">{label}</th>
+                    <td className="py-4 pr-6 text-sm text-[var(--ink)]">{norma}</td>
+                    <td className="py-4 pr-6 text-sm text-[var(--ink-soft)]">{traditional}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="body-text mt-4 text-[14px]">
+            Norma не замінює правові бази даних — вона робить те, чого вони не роблять: попереджає заздалегідь.
+          </p>
+        </div>
+      </section>
+
       <section className="section">
         <div className="container-site">
           <Reveal>
@@ -376,6 +453,32 @@ export default function HomePage() {
                 </Reveal>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container-site">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="eyebrow">ПИТАННЯ</p>
+              <h2 className="h-display h2 mt-3">Часті питання</h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-12 border-t border-[color:var(--line)]">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="faq-details border-b border-[color:var(--line)] py-4">
+                <summary className="faq-summary flex cursor-pointer list-none items-center justify-between gap-6 py-2">
+                  <span className="h-display text-[16px]">{faq.question}</span>
+                  <span className="flex h-4 w-4 shrink-0 items-center justify-center text-[var(--ink-soft)]">
+                    <Plus size={16} strokeWidth={1.5} className="faq-plus" />
+                    <Minus size={16} strokeWidth={1.5} className="faq-minus" />
+                  </span>
+                </summary>
+                <p className="body-text max-w-3xl pb-2 pr-8">{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
@@ -484,3 +587,4 @@ export default function HomePage() {
     </main>
   );
 }
+

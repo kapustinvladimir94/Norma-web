@@ -163,3 +163,15 @@ img {
     padding: 64px 0;
   }
 }
+
+details.faq-details[open] .faq-plus {
+  display: none;
+}
+
+details.faq-details:not([open]) .faq-minus {
+  display: none;
+}
+
+summary.faq-summary::-webkit-details-marker {
+  display: none;
+}
