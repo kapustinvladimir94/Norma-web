@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,7 +23,10 @@ export default function RootLayout({
       lang="uk"
       className={`${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-slate-950 text-slate-100">{children}</body>
+      <body className="min-h-full bg-slate-950 text-slate-100">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
