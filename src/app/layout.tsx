@@ -3,12 +3,12 @@ import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+  variable: "--font-body",
+  subsets: ["latin", "cyrillic"],
 });
 
 const fraunces = Fraunces({
-  variable: "--font-fraunces",
+  variable: "--font-display",
   subsets: ["latin"],
   weight: ["500", "600"],
 });

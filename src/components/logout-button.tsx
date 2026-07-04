@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
 
@@ -12,11 +12,7 @@ export function LogoutButton() {
   };
 
   return (
-    <button
-      type="button"
-      onClick={handleLogout}
-      className="rounded-xl border border-white/10 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-indigo-400/60 hover:text-white"
-    >
+    <button type="button" onClick={handleLogout} className="btn-secondary px-4 py-2 text-sm">
       Вийти
     </button>
   );

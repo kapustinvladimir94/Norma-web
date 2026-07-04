@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
@@ -20,6 +20,7 @@ export function AuthForm() {
       setError("Введіть коректну email-адресу.");
       return;
     }
+
     document.cookie = `norma_auth_email=${encodeURIComponent(cleaned)}; Path=/; Max-Age=2592000; SameSite=Lax`;
     router.push("/dashboard");
     router.refresh();
@@ -28,7 +29,7 @@ export function AuthForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-300">
+        <label htmlFor="email" className="mb-2 block text-sm font-medium text-[var(--ink-soft)]">
           Email
         </label>
         <input
@@ -41,18 +42,14 @@ export function AuthForm() {
             if (error) setError("");
           }}
           placeholder="you@company.com"
-          className="h-12 w-full rounded-xl border border-white/10 bg-slate-950 px-4 text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/30"
+          className="h-12 w-full rounded-[10px] border border-[color:var(--line)] bg-[var(--bg)] px-4 text-[var(--ink)] outline-none transition placeholder:text-[var(--ink-soft)] focus:border-[var(--accent)] focus:ring-2 focus:ring-[rgba(74,124,89,0.18)]"
         />
-        {error ? <p className="mt-2 text-sm text-red-300">{error}</p> : null}
+        {error ? <p className="mt-2 text-sm text-red-700">{error}</p> : null}
       </div>
-      <button
-        type="submit"
-        disabled={!canSubmit}
-        className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-indigo-500 px-5 font-semibold text-white transition hover:bg-indigo-400 disabled:cursor-not-allowed disabled:bg-slate-700"
-      >
+      <button type="submit" disabled={!canSubmit} className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60">
         Увійти до Norma
       </button>
-      <p className="text-sm leading-6 text-slate-400">
+      <p className="body-text text-sm">
         Ми просто збережемо email у браузері, щоб показати захищений кабінет без зайвого шуму.
       </p>
     </form>

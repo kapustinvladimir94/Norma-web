@@ -90,11 +90,9 @@ const plans = [
 function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
   return (
     <div className="max-w-2xl">
-      <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--accent)]">{eyebrow}</p>
-      <h2 className="mt-3 font-display text-[28px] leading-tight text-[var(--ink)] md:text-[36px]">
-        {title}
-      </h2>
-      <p className="mt-4 max-w-xl text-[17px] leading-6 text-[var(--ink-soft)]">{text}</p>
+      <p className="eyebrow">{eyebrow}</p>
+      <h2 className="h-display h2 mt-3">{title}</h2>
+      <p className="body-text mt-4 max-w-xl">{text}</p>
     </div>
   );
 }
@@ -110,7 +108,7 @@ function Logo({ compact = false }: { compact?: boolean }) {
         className={compact ? "h-7 w-auto object-contain grayscale opacity-80" : "h-9 w-auto object-contain"}
         priority
       />
-      <span className="font-display text-xs uppercase tracking-[0.2em] text-[var(--ink)]">Norma</span>
+      <span className="num-display text-xs uppercase tracking-[0.2em] text-[var(--ink)]">NORMA</span>
     </div>
   );
 }
@@ -120,8 +118,8 @@ function HeroPreview() {
     <div className="rounded-[16px] border border-[color:var(--line)] bg-white p-6 shadow-[var(--shadow-soft)]">
       <div className="flex items-center justify-between gap-4 border-b border-[color:var(--line)] pb-4">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--accent)]">Останній дайджест</p>
-          <p className="mt-2 font-display text-[22px] leading-tight text-[var(--ink)]">На сьогодні</p>
+          <p className="eyebrow">Останній дайджест</p>
+          <p className="h-display h3 mt-2">На сьогодні</p>
         </div>
         <span className="rounded-full bg-[var(--accent)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white">
           Опрацьовується в комітеті
@@ -129,12 +127,10 @@ function HeroPreview() {
       </div>
       <div className="mt-5 space-y-4">
         <div>
-          <p className="text-sm font-medium uppercase tracking-[0.12em] text-[var(--ink-soft)]">№ 15344</p>
-          <p className="mt-1 font-display text-[22px] leading-tight text-[var(--ink)]">
-            Хмарні послуги та центри обробки даних
-          </p>
+          <p className="num-display text-sm font-medium uppercase tracking-[0.12em] text-[var(--ink-soft)]">№ 15344</p>
+          <p className="h-display h3 mt-1">Хмарні послуги та центри обробки даних</p>
         </div>
-        <p className="text-[17px] leading-6 text-[var(--ink-soft)]">
+        <p className="body-text">
           Передає регуляторні функції до Мінцифри, уточнює вимоги до реєстрів і змінює підхід до договорів.
         </p>
         <div className="grid gap-3 rounded-[12px] bg-[var(--bg-soft)] p-4">
@@ -155,8 +151,8 @@ function HeroPreview() {
 export default function HomePage() {
   return (
     <main className="bg-[var(--bg)] text-[var(--ink)]">
-      <header className="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[rgba(250,249,246,0.88)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[rgba(250,249,246,0.92)] backdrop-blur-md">
+        <div className="container-site flex items-center justify-between gap-4 py-4">
           <Logo />
           <nav className="hidden items-center gap-8 md:flex">
             <a className="text-sm text-[var(--ink-soft)] transition hover:text-[var(--accent)]" href="#how-it-works">
@@ -166,34 +162,24 @@ export default function HomePage() {
               Тарифи
             </a>
           </nav>
-          <Link
-            href="/login"
-            className="rounded-[6px] border border-[color:var(--line)] px-4 py-2 text-sm font-medium text-[var(--ink)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
-          >
+          <Link href="/login" className="btn-secondary px-4 py-2 text-sm">
             Увійти
           </Link>
         </div>
       </header>
 
-      <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+      <div className="container-site">
         <Reveal>
-          <section className="grid gap-12 py-16 sm:py-20 lg:grid-cols-[minmax(0,640px)_minmax(320px,440px)] lg:items-start lg:gap-16 lg:py-24">
+          <section className="grid gap-8 py-16 sm:py-20 lg:grid-cols-[55fr_45fr] lg:items-start lg:py-24">
             <div className="max-w-[640px]">
-              <p className="text-[11px] uppercase tracking-[0.15em] text-[var(--accent)]">
-                МОНІТОРИНГ ЗАКОНОДАВСТВА
-              </p>
-              <h1 className="mt-4 max-w-[12ch] font-display text-[36px] leading-[1.1] text-[var(--ink)] md:text-[56px]">
-                Законодавство змінюється щодня. Ви дізнаєтесь першим.
-              </h1>
-              <p className="mt-6 max-w-[36rem] text-[17px] leading-6 text-[var(--ink-soft)] md:text-[18px] md:leading-7">
-                Щодня о 9:00 отримуйте дайджест законопроєктів, які стосуються саме вашої сфери.
-                ШІ відсіює нерелевантне, щоб ви бачили тільки важливе.
+              <p className="eyebrow">МОНІТОРИНГ ЗАКОНОДАВСТВА</p>
+              <h1 className="h-display h1 mt-4 max-w-[12ch]">Законодавство змінюється щодня. Ви дізнаєтесь першим.</h1>
+              <p className="body-text mt-6 max-w-[36rem] md:text-[18px]">
+                Щодня о 9:00 отримуйте дайджест законопроєктів, які стосуються саме вашої сфери. ШІ відсіює
+                нерелевантне, щоб ви бачили тільки важливе.
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/login"
-                  className="rounded-[6px] bg-[var(--ink)] px-6 py-3 text-base font-medium text-[var(--bg)] transition hover:bg-[var(--accent)]"
-                >
+                <Link href="/login" className="btn-primary">
                   Спробувати безкоштовно
                 </Link>
                 <Link href="#how-it-works" className="text-base text-[var(--ink)] transition hover:text-[var(--accent)]">
@@ -208,8 +194,8 @@ export default function HomePage() {
         </Reveal>
       </div>
 
-      <section className="border-y border-[color:var(--line)] bg-[var(--bg)] py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+      <section className="section border-y border-[color:var(--line)] bg-[var(--bg)]">
+        <div className="container-site">
           <Reveal>
             <SectionTitle
               eyebrow="Проблема"
@@ -218,13 +204,17 @@ export default function HomePage() {
             />
           </Reveal>
 
-          <div className="mt-10 grid gap-0 md:grid-cols-3 md:border-t md:border-[color:var(--line)]">
+          <div className="mt-12 grid gap-0 md:grid-cols-3 md:border-t md:border-[color:var(--line)]">
             {problems.map((item, index) => (
-              <Reveal key={item.number} delay={index * 80} className={index > 0 ? "md:border-l md:border-[color:var(--line)] md:pl-8 md:pr-4" : "md:pr-8"}>
+              <Reveal
+                key={item.number}
+                delay={index * 80}
+                className={index > 0 ? "md:border-l md:border-[color:var(--line)] md:pl-8 md:pr-4" : "md:pr-8"}
+              >
                 <article className="py-6">
-                  <p className="font-display text-[24px] text-[var(--accent)]">{item.number}</p>
-                  <h3 className="mt-4 font-display text-[22px] leading-tight text-[var(--ink)]">{item.title}</h3>
-                  <p className="mt-3 max-w-sm text-[17px] leading-6 text-[var(--ink-soft)]">{item.text}</p>
+                  <p className="num-display text-[24px] text-[var(--accent)]">{item.number}</p>
+                  <h3 className="h-display h3 mt-4">{item.title}</h3>
+                  <p className="body-text mt-3 max-w-sm">{item.text}</p>
                 </article>
               </Reveal>
             ))}
@@ -232,8 +222,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="how-it-works" className="bg-[var(--bg-soft)] py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+      <section id="how-it-works" className="section bg-[var(--bg-soft)]">
+        <div className="container-site">
           <Reveal>
             <SectionTitle
               eyebrow="Як це працює"
@@ -242,16 +232,16 @@ export default function HomePage() {
             />
           </Reveal>
 
-          <div className="relative mt-12 grid gap-8 lg:grid-cols-3 lg:gap-12 lg:before:absolute lg:before:left-8 lg:before:right-8 lg:before:top-6 lg:before:h-px lg:before:bg-[color:var(--line)]">
+          <div className="relative mt-12 grid gap-8 lg:grid-cols-3 lg:before:absolute lg:before:left-8 lg:before:right-8 lg:before:top-6 lg:before:h-px lg:before:bg-[color:var(--line)]">
             {steps.map((step, index) => (
               <Reveal key={step.number} delay={index * 90} className="relative">
                 <div className="relative z-10 flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[color:var(--accent)] bg-[var(--bg-soft)] font-display text-[18px] text-[var(--accent)]">
+                  <div className="num-display flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[color:var(--accent)] bg-[var(--bg-soft)] text-[18px] text-[var(--accent)]">
                     {step.number}
                   </div>
                   <div className="pt-1">
-                    <h3 className="font-display text-[22px] text-[var(--ink)]">{step.title}</h3>
-                    <p className="mt-3 max-w-sm text-[17px] leading-6 text-[var(--ink-soft)]">{step.text}</p>
+                    <h3 className="h-display h3">{step.title}</h3>
+                    <p className="body-text mt-3 max-w-sm">{step.text}</p>
                   </div>
                 </div>
               </Reveal>
@@ -260,25 +250,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+      <section className="section">
+        <div className="container-site">
           <Reveal>
             <SectionTitle
               eyebrow="Фічі"
-              title="П’ять відчуттів преміального консалтингу, але без зайвого тиску."
+              title="П'ять відчуттів преміального консалтингу, але без зайвого тиску."
               text="ШІ бере на себе первинний відбір, а ви отримуєте короткі й зрозумілі сигнали для дій."
             />
           </Reveal>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
                 <Reveal key={feature.title} delay={index * 70}>
-                  <article className="group h-full rounded-[10px] border border-[color:var(--line)] bg-white p-8 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(20,22,26,0.08)]">
+                  <article className="group flex h-full flex-col rounded-[10px] border border-[color:var(--line)] bg-white p-8 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(20,22,26,0.08)]">
                     <Icon size={24} strokeWidth={1.5} className="text-[var(--accent)]" />
-                    <h3 className="mt-6 font-display text-[22px] text-[var(--ink)]">{feature.title}</h3>
-                    <p className="mt-3 text-[17px] leading-6 text-[var(--ink-soft)]">{feature.text}</p>
+                    <h3 className="h-display h3 mt-6">{feature.title}</h3>
+                    <p className="body-text mt-3">{feature.text}</p>
                   </article>
                 </Reveal>
               );
@@ -287,8 +277,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="pricing" className="bg-[var(--bg)] py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+      <section id="pricing" className="section bg-[var(--bg)]">
+        <div className="container-site">
           <Reveal>
             <SectionTitle
               eyebrow="Тарифи"
@@ -297,7 +287,7 @@ export default function HomePage() {
             />
           </Reveal>
 
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          <div className="mt-12 grid gap-8 lg:grid-cols-3">
             {plans.map((plan, index) => {
               const isPro = plan.highlighted;
               return (
@@ -309,7 +299,7 @@ export default function HomePage() {
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <p className="font-display text-[24px] text-[var(--ink)]">{plan.name}</p>
+                        <p className="h-display h3">{plan.name}</p>
                         {isPro ? (
                           <span className="mt-3 inline-flex rounded-full bg-[var(--accent)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
                             Рекомендуємо
@@ -317,12 +307,12 @@ export default function HomePage() {
                         ) : null}
                       </div>
                       <div className="text-right">
-                        <div className="font-display text-[40px] leading-none text-[var(--ink)]">{plan.price}</div>
+                        <div className="num-display text-[40px] leading-none text-[var(--ink)]">{plan.price}</div>
                         <div className="mt-1 text-sm text-[var(--ink-soft)]">$/міс</div>
                       </div>
                     </div>
 
-                    <ul className="mt-7 space-y-3 text-[17px] leading-6 text-[var(--ink-soft)]">
+                    <ul className="body-text mt-7 space-y-3">
                       {plan.items.map((item) => (
                         <li key={item} className="flex gap-3">
                           <span className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
@@ -331,15 +321,8 @@ export default function HomePage() {
                       ))}
                     </ul>
 
-                    <div className="mt-8">
-                      <Link
-                        href="/login"
-                        className={`inline-flex h-12 items-center justify-center rounded-[6px] px-5 text-sm font-medium transition ${
-                          plan.variant === "solid"
-                            ? "bg-[var(--ink)] text-[var(--bg)] hover:bg-[var(--accent)]"
-                            : "border border-[var(--ink)] bg-transparent text-[var(--ink)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
-                        }`}
-                      >
+                    <div className="mt-auto pt-8">
+                      <Link href="/login" className={plan.variant === "solid" ? "btn-primary w-full" : "btn-secondary w-full"}>
                         {plan.cta}
                       </Link>
                     </div>
@@ -351,26 +334,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+      <section className="section">
+        <div className="container-site">
           <Reveal>
             <div className="rounded-[16px] bg-[var(--ink)] px-6 py-12 text-[var(--bg)] sm:px-10 lg:px-12 lg:py-14">
-              <p className="text-[11px] uppercase tracking-[0.15em] text-[rgba(250,249,246,0.74)]">
-                Преміальний старт
-              </p>
+              <p className="eyebrow text-[rgba(250,249,246,0.74)]">Преміальний старт</p>
               <div className="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
                 <div>
-                  <h2 className="font-display text-[32px] leading-tight md:text-[44px]">
-                    Почніть моніторинг сьогодні
-                  </h2>
-                  <p className="mt-4 max-w-2xl text-[17px] leading-6 text-[rgba(250,249,246,0.8)]">
+                  <h2 className="h-display h2 text-[var(--bg)] md:text-[44px]">Почніть моніторинг сьогодні</h2>
+                  <p className="body-text mt-4 max-w-2xl text-[rgba(250,249,246,0.8)]">
                     Оберіть тему, налаштуйте канали і вже завтра отримайте перший випуск у зрозумілому,
                     короткому форматі.
                   </p>
                 </div>
                 <Link
                   href="/login"
-                  className="inline-flex h-12 items-center justify-center rounded-[6px] bg-[var(--accent)] px-6 text-sm font-medium text-white transition hover:bg-[var(--accent-dark)]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-[6px] border border-[var(--bg)] bg-[var(--accent)] px-6 py-3 text-sm font-medium text-white transition hover:border-[var(--accent-dark)] hover:bg-[var(--accent-dark)]"
                 >
                   Спробувати 14 днів безкоштовно
                 </Link>
@@ -381,7 +360,7 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t border-[color:var(--line)] bg-[var(--bg)] py-8">
-        <div className="mx-auto flex max-w-[1120px] flex-col gap-5 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <div className="container-site flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-4">
             <Logo compact />
             <span className="text-sm text-[var(--ink-soft)]">Norma © 2026</span>
