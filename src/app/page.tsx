@@ -67,8 +67,8 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
       <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 sm:px-8 lg:px-12">
-        <header className="flex items-center justify-between border-b border-white/10 pb-6">
-          <div>
+        <header className="flex flex-col items-start justify-between gap-4 border-b border-white/10 pb-6 sm:flex-row sm:items-center">
+          <div className="min-w-0">
             <p className="text-sm font-medium uppercase tracking-[0.24em] text-indigo-300">Norma</p>
             <p className="mt-1 text-sm text-slate-400">Моніторинг законодавства для бізнесу</p>
           </div>
@@ -80,13 +80,16 @@ export default function HomePage() {
           </Link>
         </header>
 
-        <section className="grid flex-1 items-center gap-12 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:py-20">
+        <section className="grid flex-1 items-center gap-12 py-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16 lg:py-20">
           <div className="max-w-3xl">
             <p className="mb-5 inline-flex rounded-full border border-indigo-400/30 bg-indigo-500/10 px-4 py-1 text-sm text-indigo-200">
               Бізнес-дайджест законопроєктів України
             </p>
-            <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Norma — моніторинг законодавства для вашого бізнесу
+            <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <span className="bg-gradient-to-r from-indigo-300 via-indigo-200 to-white bg-clip-text text-transparent">
+                Norma
+              </span>{" "}
+              — моніторинг законодавства для вашого бізнесу
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
               Щодня о 9:00 отримуйте дайджест законопроєктів, які стосуються саме вашої сфери. ШІ
@@ -95,7 +98,7 @@ export default function HomePage() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link
                 href="/login"
-                className="inline-flex items-center justify-center rounded-xl bg-indigo-500 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-400"
+                className="inline-flex items-center justify-center rounded-xl bg-[#6366f1] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-indigo-950/30 transition hover:bg-indigo-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
               >
                 Спробувати безкоштовно →
               </Link>
@@ -103,7 +106,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-indigo-950/30">
+          <div className="w-full rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-indigo-950/30">
             <p className="text-sm font-medium text-slate-300">Що ви побачите о 9:00</p>
             <div className="mt-6 space-y-4">
               {[
@@ -170,14 +173,21 @@ export default function HomePage() {
                 key={plan.name}
                 className={`rounded-2xl border p-6 ${
                   plan.highlighted
-                    ? "border-indigo-400/70 bg-indigo-500/10 shadow-lg shadow-indigo-950/40"
+                    ? "border-indigo-300 bg-indigo-500/10 shadow-lg shadow-indigo-950/40 ring-1 ring-indigo-300/40"
                     : "border-white/10 bg-white/5"
                 }`}
               >
-                <div className="flex items-baseline justify-between gap-4">
+                <div className="flex items-start justify-between gap-4">
                   <p className="text-xl font-semibold text-white">{plan.name}</p>
-                  <p className="text-sm font-medium text-slate-400">{plan.price}</p>
+                  {plan.highlighted ? (
+                    <span className="rounded-full border border-indigo-300/60 bg-indigo-300/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-200">
+                      Популярний
+                    </span>
+                  ) : (
+                    <p className="text-sm font-medium text-slate-400">{plan.price}</p>
+                  )}
                 </div>
+                {plan.highlighted ? <p className="mt-3 text-sm font-medium text-indigo-200">{plan.price}</p> : null}
                 <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-300">
                   {plan.items.map((item) => (
                     <li key={item} className="flex gap-3">
@@ -198,7 +208,7 @@ export default function HomePage() {
             <div className="mt-6">
               <Link
                 href="/login"
-                className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-base font-semibold text-slate-950 transition hover:bg-slate-100"
+                className="inline-flex items-center justify-center rounded-xl bg-[#6366f1] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-indigo-950/30 transition hover:bg-indigo-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
               >
                 Спробувати 14 днів безкоштовно
               </Link>
@@ -208,12 +218,20 @@ export default function HomePage() {
 
         <footer className="flex flex-col gap-3 border-t border-white/10 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>Norma © 2026</p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
             <a href="#" className="transition hover:text-slate-300">
               Політика конфіденційності
             </a>
             <a href="#" className="transition hover:text-slate-300">
               Умови використання
+            </a>
+            <a
+              href="https://t.me/norma_law_bot"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-indigo-300 transition hover:text-indigo-200"
+            >
+              @norma_law_bot
             </a>
           </div>
         </footer>
