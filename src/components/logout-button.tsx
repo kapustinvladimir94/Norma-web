@@ -1,14 +1,14 @@
-﻿"use client";
+"use client";
 
 import { useRouter } from "next/navigation";
+import { clearStoredJwt } from "@/lib/api";
 
 export function LogoutButton() {
   const router = useRouter();
 
   const handleLogout = () => {
-    document.cookie = "norma_auth_email=; Path=/; Max-Age=0; SameSite=Lax";
+    clearStoredJwt();
     router.push("/login");
-    router.refresh();
   };
 
   return (
